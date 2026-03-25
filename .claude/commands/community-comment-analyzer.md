@@ -23,7 +23,7 @@ Collect and analyze community feedback from community.make.com and Reddit about 
 Before doing anything, load the following context files to ground your analysis:
 
 - `context/feature-make-grid-observability.md` — feature status, known gaps, and metrics
-- `context/company-context.md` — 2025 strategic priorities
+- `context/company-context.md` — 2026 strategic priorities
 - `context/pm-ways-of-working.md` — OKRs, decision thresholds, review cadences
 - `context/data-structure.md` — known data gaps (used to flag if a complaint is already a known gap)
 
@@ -35,7 +35,7 @@ Before doing anything, load the following context files to ground your analysis:
 | Analytics Dashboard | GA | No team-level breakdown for free plans, limited export |
 | Alerting & Error Monitoring | Partial | No Slack/webhook alerting, no anomaly detection, no SLA alerts |
 
-**2025 Strategic Priorities (for auto-prioritization):**
+**2026 Strategic Priorities (for auto-prioritization):**
 1. AI Agents & Visual Orchestration
 2. Observability at Scale
 3. Enterprise Readiness
