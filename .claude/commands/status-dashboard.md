@@ -222,23 +222,22 @@ From the merged list, select features for the executive summary using this logic
 - All P0 features (regardless of status)
 - All P1 features with status: On Track, At Risk, or Blocked
 - Any feature with Risk Level 🔴 High
-- Any feature Shipped in the last 30 days (recent wins)
 
-**Include if space allows (up to 8 total):**
+**Include if space allows (up to 6 total):**
 - P1 features with status Not Started (if due date is within 60 days)
 - P2 features with 🔴 High risk
 
 **Exclude:**
 - P3 features (unless they have a P0/P1 dependency)
-- Paused features (mention in a brief footnote only)
+- Paused features (omit entirely)
 - Pure technical debt items with no user-facing impact
+- Recently shipped features (do not include a "recent wins" section)
 
-**For each selected feature, write:**
-- One headline sentence (what it is and why it matters to the business)
-- Status badge: 🟢 On Track / 🟡 At Risk / 🔴 Blocked / ✅ Shipped
-- One progress note (what happened recently)
-- One risk/blocker note (if any — leave blank if none)
-- OKR it contributes to
+**For each selected feature, prepare:**
+- P-tier badge + feature name + status pill
+- One sentence: what it is + where it stands right now (include key metric vs target inline if available)
+- Blocker/risk note only if status is At Risk or Blocked (one line)
+- Owner + target quarter
 
 ---
 
@@ -262,83 +261,44 @@ Produce a complete, self-contained HTML email newsletter. It must render perfect
 - 🟢 On Track pill: `#E6F9F4` background, `#00A884` text
 - 🟡 At Risk pill: `#FFF8E1` background, `#B8860B` text
 - 🔴 Blocked pill: `#FFECEC` background, `#CC3333` text
-- ✅ Shipped pill: `#EDF7FF` background, `#1565C0` text
 - Max width: 680px, centered
 - Inline styles only — no external CSS, no JavaScript
+- Use `<table>` layout throughout for email client compatibility
 
-**Required sections (in order):**
+**Sections — exactly in this order, no others:**
 
-**1. Header Banner**
-```
-[Make logo text: "make"] [right-aligned: "Product Leadership Briefing"]
-[Date: "Week of March 25, 2026"]
-[Subtitle: "Observability · Top Features · Executive Summary"]
-```
+**1. Header**
+- `make.` wordmark left, "Product Leadership Briefing" right-aligned — both in header purple bar
+- Second row: "Observability · Top Features · Executive Summary" + date ("Week of [DATE]")
+- No "Prepared by" line anywhere in the email
 
-**2. At a Glance — 4 stat boxes in a row:**
-- **Features in Scope** — total count of features in this update
-- **On Track** — count (🟢)
-- **At Risk / Blocked** — count (🟡🔴)
-- **Shipped This Month** — count (✅)
+**2. At a Glance — 4 stat boxes in a single row**
+- Features in Scope / 🟢 On Track / 🔴 At Risk or Blocked / ✅ Shipped This Month
+- Each box: white card, 4px purple top border (`#6C1DFF`), large bold number, muted label below
 
-Stat box style: white card, purple top border (4px `#6C1DFF`), large bold number in `#6C1DFF`, label below in muted gray.
+**3. ⚠ Needs Attention** (only if any Blocked or At Risk features exist)
+- One compact card per alert: left border color matches severity (red for Blocked, amber for At Risk)
+- Inside each card: P-tier badge + feature name + status pill on one line; blocker description + italic ask on the next line
+- Keep each alert to 2 lines of text maximum
 
-**3. Priority Alerts** (only if any 🔴 Blocked or 🔴 High Risk features exist)
-Heading: "⚠ Needs Attention"
-Each alert is a card with:
-- Red left border (4px `#FF3B3B`)
-- Feature name + P-tier badge
-- One-line blocker description
-- Suggested action or ask
+**4. Top Priority Features**
+- One card per feature, P0 first then P1, separated by 10px gap
+- Card structure (left purple border, subtle shadow):
+  - Row 1: P-tier badge + feature name (left) | status pill (right)
+  - Row 2: One sentence — what it is + current progress + key metric vs target inline (e.g. "28% vs 40% target") — highlighted in the appropriate status color
+  - Row 3 (only if At Risk or Blocked): risk/blocker note in red or amber
+  - Row 4: 👤 Owner · 📅 Target quarter
+- No section labels like "📌 What:" or "📊 Progress:" — just clean prose sentences
 
-**4. Top Priority Features** — Feature cards, P0 first then P1
-Each card:
-```
-[P-TIER BADGE]  FEATURE NAME                    [STATUS PILL]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 What: [headline sentence — why it matters]
-📊 Progress: [latest update note]
-🎯 OKR: [OKR it contributes to]
-⚠ Risk: [blocker/risk note — omit row if none]
-👤 Owner: [name]   📅 Target: [date/quarter]
-```
+**5. Key Metrics — 2×2 grid**
+- One card per OKR metric: metric name, large bold current value (colored by status), target below, progress bar, status label
+- Colors: 🟢 `#00A884`, 🟡 `#B8860B`, 🔴 `#CC3333`
+- Progress bar: `#E8E0FF` track, fill color matches status
+- If live data unavailable: show OKR target values and note "Live data not yet connected"
 
-Card style: white background, left border `#6C1DFF` (4px), `border-radius: 8px`, subtle shadow.
-
-**5. Recently Shipped** (if any shipped in last 30 days)
-Heading: "✅ Shipped — Recent Wins"
-Compact list style: feature name + one-line impact note + date, with green checkmark accent.
-
-**6. Roadmap Snapshot — Visual Timeline**
-A simple HTML/CSS horizontal timeline or bar chart showing P0/P1 features mapped to quarters (Q1/Q2/Q3/Q4 of current year).
-
-For each feature: a colored bar spanning its target quarter(s). Use inline table layout:
-- Row per feature
-- Columns = Q1 | Q2 | Q3 | Q4
-- Filled cell = `#6C1DFF` background, white text with feature name abbreviation
-- Empty cell = `#F0EBFF` background
-
-**7. Key Metrics Snapshot** (if data available from Jira/Monday or context)
-A 2×2 grid of metric cards showing OKR progress indicators where known:
-- Make Grid adoption %
-- Error resolution time
-- Alert latency
-- Support ticket trend
-
-If live metrics aren't available, note "Live data not yet connected — metrics sourced from context baseline" and show the OKR targets as reference.
-
-**8. Paused / Deprioritized** (if any)
-One compact line per paused feature: name + reason (if known). No full cards — this is a footnote.
-
-**9. Footer**
-```
-[Make wordmark] | Product Management — Observability
-Prepared by: [PM name — ask user or use "Observability PM"]
-For questions: reply to this email
-Next update: [next week's date]
-
-"Powered by Claude · Make PM Dashboard"
-```
+**6. Footer — single line**
+- `make.` wordmark + "Product Management — Observability · Next update: [DATE]"
+- Dark background (`#1A1A2E`), no "Prepared by", no name attribution
 
 ---
 
@@ -473,8 +433,15 @@ Deliver in this order:
 - Do NOT send the email without explicit user confirmation — always show the draft first.
 - The HTML must be fully self-contained with inline styles only — no external CSS, fonts, or scripts.
 - P0 features must always be included in the executive summary if they exist.
-- Always map features to their OKR from the context files — don't leave OKR alignment blank.
 - If no live data is available from any source, generate a template populated with the features from `context/feature-make-grid-observability.md` and mark each as "Status unknown — live data not connected".
 - Include the Make scenario blueprint every time, even for one-off sends, so the user can set up automation.
 - Always end with: "Next update: [date]. Enable the Make scenario to automate weekly delivery."
-- Keep executive language: no jargon, no ticket numbers in the main body (footnotes only), outcomes-focused.
+- Keep executive language: no jargon, no ticket numbers in the main body, outcomes-focused.
+- **Format rules — never break these:**
+  - No "Prepared by" or name attribution anywhere in the email
+  - No "Recent Wins" or shipped features section
+  - No roadmap timeline section
+  - Feature cards use clean prose (no "📌 What:" / "📊 Progress:" labels)
+  - Each feature card body is a maximum of 2 lines of text
+  - Needs Attention alerts are a maximum of 2 lines each
+  - Footer is a single line only
