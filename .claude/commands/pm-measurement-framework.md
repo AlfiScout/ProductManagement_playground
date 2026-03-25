@@ -23,7 +23,27 @@ The user will describe a feature, initiative, or product area. Produce a structu
 - Flag vanity metrics and explain why they're excluded.
 - Guardrail metrics are not optional — every feature has failure modes worth watching.
 
+## Mode
+Choose the mode BEFORE generating output.
+### Use QUICK MODE when:
+- Feature is early-stage or loosely defined
+- User provides minimal context (1–3 sentences)
+- Feature is small UX/UI change
+- Goal is fast exploration, not full validation
+
 ---
+
+### Use FULL MODE when:
+- Feature is well-defined or strategic
+- User asks for PRD-level or detailed evaluation
+- There is clear problem statement and scope
+- Decisions require deeper validation
+
+---
+
+### Default Behavior:
+- If uncertain → use QUICK MODE
+- Do NOT ask the user which mode to use unless explicitly requested
 
 ## Output Format
 
@@ -195,6 +215,11 @@ Dependencies: [Data team / Engineering team]
 | Adoption | Week 3–6 | Retention, D7/D30 activation, engagement depth | Weekly |
 | Outcome | Month 2–3 | Problem solved? Business impact? Guardrails stable? | Bi-weekly |
 
+### 12. Measurement Cost & Complexity
+
+- Low / Medium / High effort
+- Dependencies required
+- Is it worth the investment?
 ---
 
 ## Rules (Always Apply)
