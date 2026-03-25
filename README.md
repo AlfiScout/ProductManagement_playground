@@ -14,7 +14,7 @@ This setup reflects a **Product Operations mindset**, acting as a bridge between
 
 ---
 
-## 🎯 Objective
+## Objective
 
 The primary objective of this environment is:
 
@@ -32,7 +32,7 @@ This includes features such as:
 
 ---
 
-## 🧠 Core Assumptions
+## Core Assumptions
 
 ### 1. PM pain points are already understood
 I assume prior:
@@ -67,7 +67,7 @@ This environment prioritizes:
 
 ---
 
-## 🏗️ Environment Structure
+## Environment Structure
 
 The environment is built around two main components:
 
@@ -100,7 +100,7 @@ I intentionally grouped PM work into **three core areas**:
 
 ---
 
-## ⚙️ Skill Design & Rationale
+## Skill Design & Rationale
 
 ### 1. Ideation & Signal Collection  
 **Skill:** Community Comment Analyzer  
@@ -168,7 +168,7 @@ An automated workflow that:
 
 ---
 
-## 🤔 Key Design Decisions
+## Key Design Decisions
 
 ### 1. Focus on Observability only
 Instead of building a generic PM assistant, I:
@@ -201,7 +201,7 @@ Examples:
 
 ---
 
-## 🚫 What I Deliberately Left Out
+## What I Deliberately Left Out
 
 ### 1. PRD writing automation
 - Too generic  
@@ -222,43 +222,18 @@ Examples:
 
 ---
 
-## 🔮 What I Would Build Next
+## What I Would Build Next
 
-### 1. Opportunity Sizing Engine
-- Combines usage data + qualitative signals  
-- Estimates impact before discovery  
-
----
-
-### 2. Experimentation Framework
-- Defines experiment design  
-- Tracks statistical significance  
-- Links results to decisions  
+### 1. Integration with internal tools
+- Ccreation of tasks  
+- Automatic notifications to affected users
+- dependencies update 
 
 ---
 
-### 3. AI Insight Layer
-- Answers questions like:
-  - “Why did adoption drop?”
-  - “Which segment struggles most?”
+### 2. Integration with actual data
+- quick check of needed data metrics without the need to submit request to data team
 
 ---
+### 3. Support tickets synthesis and summarization
 
-### 4. Lightweight UI Layer
-- Quick mode vs deep mode  
-- Faster day-to-day usage  
-
----
-
-## 🧩 Final Thought
-
-This environment is not just a collection of tools.
-
-It is a **structured attempt to redesign how Product Managers operate**, by:
-
-- Embedding **data thinking into every workflow**
-- Reducing **manual and repetitive work**
-- Enabling **faster, higher-quality decisions**
-
-> The goal is simple:  
-> Spend less time gathering information — and more time making impactful decisions.
